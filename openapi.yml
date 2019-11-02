@@ -1,0 +1,37 @@
+openapi: 3.0.0
+info:
+  title: Swagger REST Article
+  version: 1.0.0
+  description: Specifications for our server
+  contact:
+    email: "test@example.com"
+servers:
+  - url: "http://localhost:3000/{basePath}"
+    variables:
+      basePath:
+        default: api
+paths:
+  /people:
+    get:
+      tags:
+        - People
+      operationId: people.read
+      summary: The people data structure supported by the server
+      description: Read the list of people
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    firstName:
+                      type: string
+                    lastName:
+                      type: string
+                    timestamp
+                      type: string
+components:
+  schemas: {}
