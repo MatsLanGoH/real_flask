@@ -60,12 +60,46 @@ def read_one(last_name):
     return person
 
 
-def create():
-    return
+def create(person):
+    """This function creates a new person in the people structure
+    based on the passed in person data.
+
+    :param person:
+        Person to create in people structure
+    :return:
+        201 on success, 406 on person exists
+    """
+    last_name = person.get("last_name", None)
+    first_name = person.get("first_name", None)
+
+    if last_name not in PEOPLE and last_name is not None:
+        PEOPLE[last_name] = {
+            "last_name": last_name,
+            "first_name": first_name,
+            "timestamp": get_timestamp(),
+        }
+        return make_response(f"{last_name} successfully created")
+    else:
+        abort(406, f"Person with last name {last_name} already exists.")
 
 
-def update():
-    return
+def update(last_name, person):
+    """
+    This function updates an existing person in the people structure.
+
+    :param last_name:
+        Last name of person to update in the people structure
+    :param body:
+        Request body with person data.
+    :return:
+        Updated person structure
+    """
+    if last_name in PEOPLE:
+        PEOPLE[last_name]["first_name"] = person.get("first_name")
+        PEOPLE[last_name]["timestamp"] = get_timestamp()
+        return PEOPLE[last_name]
+    else:
+        abort(404, f"Person with last name {last_name} not found")
 
 
 def delete():
