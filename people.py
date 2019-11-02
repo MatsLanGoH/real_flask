@@ -26,7 +26,7 @@ PEOPLE = {
 
 
 # Create a handler for our read (GET) people
-def read():
+def read_all():
     """This function responds to a request for /api/people
     with the complete lists of people
 
@@ -35,3 +35,19 @@ def read():
     """
     # Create the list of people from our data
     return [PEOPLE[key] for key in sorted(PEOPLE.keys())]
+
+
+def read_one():
+    return
+
+
+def create():
+    return
+
+
+def update():
+    return
+
+
+def delete():
+    return
