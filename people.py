@@ -13,18 +13,18 @@ def get_timestamp():
 # Data to serve with our API
 PEOPLE = {
     "Farrell": {
-        "firstname": "Doug",
-        "lastname": "Farrell",
+        "first_name": "Doug",
+        "last_name": "Farrell",
         "timestamp": get_timestamp(),
     },
     "Brockman": {
-        "firstname": "Kent",
-        "lastname": "Brockman",
+        "first_name": "Kent",
+        "last_name": "Brockman",
         "timestamp": get_timestamp(),
     },
     "Easter": {
-        "firstname": "Bunny",
-        "lastname": "Easter",
+        "first_name": "Bunny",
+        "last_name": "Easter",
         "timestamp": get_timestamp(),
     },
 }
