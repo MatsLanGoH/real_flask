@@ -1,5 +1,10 @@
 from datetime import datetime
 
+from flask import (
+    abort,
+    make_response,
+)
+
 
 def get_timestamp():
     return datetime.now().strftime(("%Y-%m-%d %H:%M:%S"))
@@ -37,8 +42,22 @@ def read_all():
     return [PEOPLE[key] for key in sorted(PEOPLE.keys())]
 
 
-def read_one():
-    return
+def read_one(last_name):
+    """This function responds to a request for /api/people/{lastName}
+    with one matching person from people
+    
+    :param last_name:
+        last name of person to find
+    
+    :return:
+        person matching last name
+    """
+    if last_name in PEOPLE:
+        person = PEOPLE.get(last_name)
+    else:
+        abort(404, f"Person with last name {last_name} not found.")
+
+    return person
 
 
 def create():
